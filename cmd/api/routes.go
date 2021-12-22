@@ -16,7 +16,7 @@ func Routes(benderHandler BenderHandler) http.Handler {
 			r.Use(benderHandler.RecoverPanic)
 			r.Use(benderHandler.EnableCORS)
 			r.Get("/health", benderHandler.HealthCheck)
-			r.Post("/task", benderHandler.PostDoTaskHandler)
+			r.Post("/task", benderHandler.ExecBackgroundTask)
 		})
 	})
 
