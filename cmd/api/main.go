@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"flag"
+	. "github.com/v8tix/bender/internal/handler"
 	. "github.com/v8tix/kit/app"
 	. "github.com/v8tix/kit/handler"
 	. "github.com/v8tix/kit/log"
@@ -50,7 +51,9 @@ func main() {
 	apiServer.IdleTimeout = time.Duration(idleTimeout) * time.Second
 	apiServer.ReadTimeout = time.Duration(readTimeout) * time.Second
 	apiServer.WriteTimeout = time.Duration(writeTimeout) * time.Second
-	apiServer.Handler = Routes(NewHandler(app, cors))
+	handler := NewGenericHandler(app, cors)
+	benderHandler := NewBenderHandler(handler)
+	apiServer.Handler = Routes(benderHandler)
 	app.Log.I.Printf("database connection pool established")
 	//repo := NewRepositoryI(app)
 

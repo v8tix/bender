@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/go-chi/chi/v5 v5.0.7
-	github.com/v8tix/kit v0.1.1
+	github.com/v8tix/kit v0.1.3
 	go.mongodb.org/mongo-driver v1.7.4
 )
 
